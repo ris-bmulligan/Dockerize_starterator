@@ -22,6 +22,7 @@ RUN pip install beautifulsoup4
 RUN pip install biopython==1.76
 RUN pip install mysqlclient
 RUN pip install reportlab
+RUN pip install requests
 
 # Create application directory
 RUN mkdir -p /usr/src/app
