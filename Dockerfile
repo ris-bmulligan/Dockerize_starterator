@@ -31,7 +31,7 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # Clone the specific branch of the starterator repository from your GitHub account
-RUN git clone -b SchemeTen https://github.com/cdshaffer/starterator.git .
+RUN git clone -b dockerization https://github.com/cdshaffer/starterator.git .
 
 # Copy the database file into the container
 COPY Actino_Draft.sql /docker-entrypoint-initdb.d/
