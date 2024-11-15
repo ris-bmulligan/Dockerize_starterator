@@ -35,9 +35,6 @@ WORKDIR /usr/src/app
 # Clone the specific branch of the starterator repository from your GitHub account
 RUN git clone -b dockerization https://github.com/cdshaffer/starterator.git .
 
-# Set the working directory to the cloned repository
-WORKDIR /usr/src/app/starterator
-
 # Ensure the latest commit is pulled during each build
 RUN git pull origin dockerization
 
