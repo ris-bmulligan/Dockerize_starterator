@@ -32,11 +32,14 @@ RUN mkdir -p /usr/src/app
 # Set the working directory
 WORKDIR /usr/src/app
 
-# Remove the .git directory to force git clone to always run
-RUN rm -rf /usr/src/app/.git
-
 # Clone the specific branch of the starterator repository from your GitHub account
 RUN git clone -b dockerization https://github.com/cdshaffer/starterator.git .
+
+# Set the working directory to the cloned repository
+WORKDIR /usr/src/app/starterator
+
+# Ensure the latest commit is pulled during each build
+RUN git pull origin dockerization
 
 # Copy the database file into the container
 COPY Actino_Draft.sql /docker-entrypoint-initdb.d/
