@@ -14,6 +14,8 @@ RUN apt-get update && apt-get install -y \
     libjpeg-dev \
     zlib1g-dev \
     gir1.2-gtk-3.0 \
+    clustalw \
+    clustalo \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Python packages separately for caching
