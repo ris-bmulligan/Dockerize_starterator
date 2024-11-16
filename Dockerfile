@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
     gir1.2-gtk-3.0 \
     clustalw \
     clustalo \
+    vim \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Python packages separately for caching
