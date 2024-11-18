@@ -19,13 +19,8 @@ RUN apt-get update && apt-get install -y \
     vim \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Python packages separately for caching
-RUN pip install PyPDF2
-RUN pip install beautifulsoup4
-RUN pip install biopython==1.76
-RUN pip install mysqlclient
-RUN pip install reportlab
-RUN pip install requests
+# Install Python packages 
+RUN pip install PyPDF2 beautifulsoup4 biopython==1.76 mysqlclient reportlab requests
 
 # Create application directory
 RUN mkdir -p /usr/src/app
