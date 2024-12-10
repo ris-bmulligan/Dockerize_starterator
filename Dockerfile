@@ -18,7 +18,8 @@ RUN apt-get update && apt-get install -y \
     clustalo \
     vim \
     && rm -rf /var/lib/apt/lists/* \
-    && mkdir -p /ris_mysql
+    && mkdir -p /ris_mysql \
+    && chmod 0777 /ris_mysql
 
 COPY run_mysql.py /ris_mysql/
 
