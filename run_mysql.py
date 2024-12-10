@@ -69,7 +69,9 @@ subprocess.call([
     '/usr/sbin/mysqld',
     '--initialize-insecure',
     '--user',
-    mysql_user
+    mysql_user,
+    stdout=subprocess.DEVNULL,
+    stderr=subprocess.DEVNULL
 ])
 run_mysqld_safe()
 sys.exit(0)
