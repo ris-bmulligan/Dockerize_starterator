@@ -18,8 +18,8 @@ RUN apt-get update && apt-get install -y \
     clustalo \
     vim \
     && rm -rf /var/lib/apt/lists/* \
-    && mkdir -p /ris_mysql \
-    && chmod 0777 /ris_mysql
+    && mkdir -p /ris_mysql/mysql.conf.d \
+    && chmod 0777 /ris_mysql/mysql.conf.d
 
 COPY run_mysql.py /ris_mysql/
 
@@ -29,7 +29,9 @@ COPY my.cnf /etc/mysql/
 
 # Install Python packages 
 RUN pip install PyPDF2 beautifulsoup4 biopython==1.76 mysqlclient reportlab requests \
-    && chmod 0755 /ris_mysql/*
+    && chmod 0755 /ris_mysql/run_mysql.py \
+    && chmod 0755 /ris_mysql/safe_redirect.sh \
+    && chmod 0644 /etc/mysql/my.cf
 
 # Create application directory
 RUN mkdir -p /usr/src/app
