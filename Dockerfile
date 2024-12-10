@@ -17,7 +17,12 @@ RUN apt-get update && apt-get install -y \
     clustalw \
     clustalo \
     vim \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && mkdir -p /ris_mysql
+
+COPY run_mysql.py /ris_mysql/
+
+COPY safe_redirect.sh /ris_mysql/
 
 # Install Python packages 
 RUN pip install PyPDF2 beautifulsoup4 biopython==1.76 mysqlclient reportlab requests
@@ -44,4 +49,5 @@ RUN chmod +x starterator.sh
 EXPOSE 3306
 
 # Start MySQL service, create database, and import SQL file, then start a bash shell
-CMD service mysql start && mysql -u root -e "CREATE DATABASE IF NOT EXISTS Actino_Draft;" && mysql -u root Actino_Draft < /docker-entrypoint-initdb.d/Actino_Draft.sql && /bin/bash
+# CMD /ris_mysql/run_mysql.py && mysql -S /tmp/mysqld.sock -u root -e "CREATE DATABASE IF NOT EXISTS Actino_Draft;" && mysql -S /tmp/mysqld.sock -u root Actino_Draft < /docker-entrypoint-initdb.d/Actino_Draft.sql && /bin/bash
+CMD /ris_mysql/run_mysql.py && mysql -S /tmp/mysqld.sock -u root -e "CREATE DATABASE IF NOT EXISTS Actino_Draft;" && /bin/bash
