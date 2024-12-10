@@ -9,6 +9,7 @@ from multiprocessing import Process
 def run_mysqld_safe():
     if os.fork() != 0:
         return
+    os.setsid()
     os.execv('/ris_mysql/safe_redirect.sh', ('' ,))
 
 mysql_user = os.environ.get('LSFUSER', 'nobody')
@@ -70,8 +71,5 @@ subprocess.call([
     '--user',
     mysql_user
 ])
-pid = os.fork()
-mysqld_safe = Process(target=run_mysqld_safe)
-mysqld_safe.daemon = True
-mysqld_safe.start()
+run_mysqld_safe()
 sys.exit(0)
