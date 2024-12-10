@@ -58,7 +58,7 @@ mysqld = {
   }
 }
 
-with open('/etc/mysql/mysql.conf.d/mysqld.cnf', 'w') as msc:
+with open('/ris_mysql/mysqld.cnf', 'w') as msc:
     for section, section_data in mysqld.items():
         msc.write('[{}]\n'.format(section))
         for k, v in section_data.items():

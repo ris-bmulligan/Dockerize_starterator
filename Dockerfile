@@ -24,6 +24,8 @@ COPY run_mysql.py /ris_mysql/
 
 COPY safe_redirect.sh /ris_mysql/
 
+COPY my.cnf /etc/mysql/
+
 # Install Python packages 
 RUN pip install PyPDF2 beautifulsoup4 biopython==1.76 mysqlclient reportlab requests \
     && chmod 0755 /ris_mysql/* \
