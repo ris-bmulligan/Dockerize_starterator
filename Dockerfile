@@ -31,7 +31,7 @@ COPY my.cnf /etc/mysql/
 RUN pip install PyPDF2 beautifulsoup4 biopython==1.76 mysqlclient reportlab requests \
     && chmod 0755 /ris_mysql/run_mysql.py \
     && chmod 0755 /ris_mysql/safe_redirect.sh \
-    && chmod 0644 /etc/mysql/my.cf
+    && chmod 0644 /etc/mysql/my.cnf
 
 # Create application directory
 RUN mkdir -p /usr/src/app
