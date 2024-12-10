@@ -65,13 +65,15 @@ with open('/ris_mysql/mysql.conf.d/mysqld.cnf', 'w') as msc:
         for k, v in section_data.items():
             msc.write('{} = {}\n'.format(k, v))
         msc.write('\n')
-subprocess.call([
-    '/usr/sbin/mysqld',
-    '--initialize-insecure',
-    '--user',
-    mysql_user,
+subprocess.call(
+    [
+        '/usr/sbin/mysqld',
+        '--initialize-insecure',
+        '--user',
+        mysql_user
+    ]
     stdout=subprocess.DEVNULL,
     stderr=subprocess.DEVNULL
-])
+)
 run_mysqld_safe()
 sys.exit(0)
