@@ -71,7 +71,7 @@ subprocess.call(
         '--initialize-insecure',
         '--user',
         mysql_user
-    ]
+    ],
     stdout=subprocess.DEVNULL,
     stderr=subprocess.DEVNULL
 )
