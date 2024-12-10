@@ -11,7 +11,7 @@ def run_mysqld_safe():
         return
     os.execv('/ris_mysql/safe_redirect.sh', ('' ,))
 
-mysql_user = os.environ.get('LSF_USER', 'nobody')
+mysql_user = os.environ.get('LSFUSER', 'nobody')
 
 for sub_dir in ['lib', 'log', 'run']:
     path = '/mysql/{}'.format(sub_dir)
