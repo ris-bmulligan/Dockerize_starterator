@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import os
-import subprocess
+import subprocess32 as subprocess
 import sys
 
 from multiprocessing import Process
